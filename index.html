@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Connectivity</title>
+  </head>
+  <body>
+    <div class="container">
+      <input
+        type="text"
+        id="inputWord"
+        placeholder="Enter word to be translated"
+      />
+      <!--     <label>
+        Select language
+        <select name="" id="select-language">
+          <option value="jp">Japanese</option>
+          <option value="kr">Korean</option>
+        </select>
+      </label> -->
+      <label for="select-language"></label>
+      <select id="select-language">
+        <option value="" disabled selected>Select language</option>
+        <option value="jp">Japanese</option>
+        <option value="kr">Korean</option>
+      </select>
+      <button id="button-translate">Translate</button>
+    </div>
+    <div class="radio-container">
+      <input type="radio" id="option1" value="pitch" />
+      <label for="option1">Speech Pitch</label>
+      <input type="radio" id="option2" value="rate" />
+      <label for="rate">Speech Rate</label>
+    </div>
+  </body>
+</html>
