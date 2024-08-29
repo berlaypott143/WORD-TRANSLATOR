@@ -6,11 +6,50 @@
 
 body {
   background-color: rgba(53, 107, 182, 0.7);
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0 20px;
+}
+
+.radio-container {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  text-align: center;
+  width: 100%; /* Makes it responsive */
+  max-width: 400px; /* Controls the width */
+}
+
+.speech-pitch,
+.speech-rate {
+  margin: 10px 0;
 }
 
 .container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-top: 50px;
+  background-color: white;
+  padding: 20px;
+  width: 100%; /* Adjust width as necessary */
+  max-width: 600px;
+  margin: 0 auto; /* Centers the container horizontally */
+}
+
+#select-language,
+#inputWord,
+#button-translate {
+  margin-right: 10px; /* Adds space between elements */
+}
+
+.translation-container {
+  height: 25vh;
+  width: 25vh;
+  background-color: red;
 }
