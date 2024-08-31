@@ -9,31 +9,61 @@
   <body>
     <div class="radio-container">
       <h1>Connectivity</h1>
-      <div class="speech-pitch">
-        Speech Pitch
-        <input type="radio" id="option-pitch1" value="pitch" />
-        <label for="option1">1</label>
-        <input type="radio" id="option-pitch2" value="pitch" />
-        <label for="option1">2</label>
-        <input type="radio" id="option-pitch3" value="pitch" />
-        <label for="option1">3</label>
-      </div>
-      <div class="speech-rate">
-        Speech Rate
-        <input type="radio" id="option-rate1" value="rate" />
-        <label for="rate">1</label>
-        <input type="radio" id="option-rate2" value="rate" />
-        <label for="rate">2</label>
-        <input type="radio" id="option-rate3" value="rate" />
-        <label for="rate">3</label>
+      <div class="radio-options">
+        <div class="speech-pitch">
+          Speech Pitch
+          <div>
+            <input type="radio" id="option-pitch1" value="pitch" />
+            <label for="option1">1</label>
+          </div>
+          <div>
+            <input type="radio" id="option-pitch2" value="pitch" />
+            <label for="option1">2</label>
+          </div>
+          <div>
+            <input type="radio" id="option-pitch3" value="pitch" />
+            <label for="option1">3</label>
+          </div>
+        </div>
+        <div class="speech-rate">
+          Speech Rate
+          <div>
+            <input type="radio" id="option-rate1" value="rate" />
+            <label for="rate">1</label>
+          </div>
+          <div>
+            <input type="radio" id="option-rate2" value="rate" />
+            <label for="rate">2</label>
+          </div>
+          <div>
+            <input type="radio" id="option-rate3" value="rate" />
+            <label for="rate">3</label>
+          </div>
+        </div>
+
+        <div class="voice">
+          Voice
+          <div>
+            <input type="radio" id="option-voice1" value="voice" />
+            <label for="rate">1</label>
+          </div>
+          <div>
+            <input type="radio" id="option-voice2" value="voice" />
+            <label for="rate">2</label>
+          </div>
+          <div>
+            <input type="radio" id="option-voice3" value="voice" />
+            <label for="rate">3</label>
+          </div>
+        </div>
       </div>
     </div>
     <div class="container">
-      <input
-        type="text"
+      <textarea
         id="inputWord"
+        class="inputWord"
         placeholder="Enter word to be translated"
-      />
+      ></textarea>
       <label for="select-language"></label>
       <select id="select-language">
         <option value="" disabled selected>Select language</option>
@@ -41,7 +71,10 @@
         <option value="kr">Korean</option>
       </select>
       <button id="button-translate">Translate</button>
-      <div class="translation-container">Translation</div>
+      <div class="translation-container">
+        <h3>Translation</h3>
+        <button class="enunciate-btn">Enunciate</button>
+      </div>
     </div>
   </body>
 </html>
