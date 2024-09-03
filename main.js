@@ -24,7 +24,9 @@ async function translateText() {
       body: JSON.stringify({
         from: "en", // Assuming 'en' (English) is the source language
         to: selectedLanguage,
-        text: wordToTranslate,
+        //text: wordToTranslate,
+        e: "",
+        q: wordToTranslate,
       }),
     };
 
@@ -33,7 +35,8 @@ async function translateText() {
       JSON.stringify({
         from: "en",
         to: selectedLanguage,
-        text: wordToTranslate,
+        e: "",
+        q: wordToTranslate,
       })
     );
 
@@ -43,10 +46,10 @@ async function translateText() {
 
       console.log("Response Status", response.status);
       console.log("Response", result);
+      console.log(result);
 
-      if (result && result.translation) {
-        document.querySelector(".translation-container").textContent =
-          result.translation;
+      if (result) {
+        document.querySelector(".translation-container").textContent = result;
       } else {
         console.error("Translation not found:", result);
       }
