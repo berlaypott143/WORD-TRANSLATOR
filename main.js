@@ -1,13 +1,8 @@
+import { API_ENDPOINT } from "./config.js";
+import { API_KEY } from "./config.js";
 // TRANSLATION
 
 let buttonTranslate = document.getElementById("button-translate");
-/*buttonTranslate.addEventListener("click", () => {
-  let inputWord = document.getElementById("inputWord").value;
-
-});*/
-
-const apiEndpoint = "https://rapid-translate-multi-traduction.p.rapidapi.com/t";
-const apiKey = "7c57acf053mshb0364180de44f0dp1b8babjsn49ffbb83c43d"; // Temporarily hardcoded, will be removed later
 
 async function translateText() {
   const wordToTranslate = document.getElementById("inputWord").value; // Fetch text from input
@@ -19,17 +14,17 @@ async function translateText() {
       headers: {
         "content-type": "application/json",
         "x-rapidapi-host": "rapid-translate-multi-traduction.p.rapidapi.com",
-        "x-rapidapi-key": apiKey, // Temporarily hardcoded
+        "x-rapidapi-key": API_KEY,
       },
       body: JSON.stringify({
-        from: "en", // Assuming 'en' (English) is the source language
-        to: selectedLanguage,
-        //text: wordToTranslate,
-        e: "",
-        q: wordToTranslate,
+        from: "en", //Assuming 'en' (English) is the source language
+        to: selectedLanguage, //target language
+        e: "", // rapidAPI format check for API Docs
+        q: wordToTranslate, //words on the input field
       }),
     };
 
+    //checking if everything is working
     console.log(
       "Request Payload",
       JSON.stringify({
@@ -41,15 +36,16 @@ async function translateText() {
     );
 
     try {
-      const response = await fetch(apiEndpoint, options);
+      const response = await fetch(API_ENDPOINT, options);
       const result = await response.json();
 
+      //more checking
       console.log("Response Status", response.status);
       console.log("Response", result);
       console.log(result);
 
       if (result) {
-        document.querySelector(".translation-container").textContent = result;
+        document.getElementById("translation").textContent = result;
       } else {
         console.error("Translation not found:", result);
       }
