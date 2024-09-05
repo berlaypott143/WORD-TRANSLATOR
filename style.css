@@ -30,7 +30,7 @@ body {
 
 .radio-options {
   display: flex;
-  justify-content: space-between; /* Spreads the sections evenly horizontally */
+  justify-content: space-evenly; /* Spreads the sections evenly horizontally */
   width: 100%;
 }
 
@@ -42,20 +42,6 @@ body {
   align-items: flex-start; /* Aligns the radio buttons to the left */
   margin: 10px 0;
 }
-
-/* .speech-pitch div,*/
-/* .speech-rate div, */
-/* .voice div { */
-/* display: flex; */
-/* align-items: center; */
-/* margin-bottom: 5px; Adds spacing between rows of radio buttons */
-/* }  */
-
-/* .speech-pitch label, */
-/* .speech-rate label, */
-/* .voice label { */
-/* margin-left: 5px; Adds a little space between the radio button and the text */
-/* } */
 
 input[type="radio"] {
   margin-right: 5px; /* Adds some spacing between the button and the label */
@@ -102,12 +88,6 @@ input[type="radio"] {
   min-width: 120px; /* Ensures they don't shrink too small */
 }
 
-/* #select-language,
-#inputWord,
-#button-translate {
-  margin-right: 5px; /* Adds space between elements 
-} */
-
 #select-language {
   margin-top: 10px;
   width: 100%;
@@ -148,7 +128,7 @@ h3 {
 }
 
 .enunciate-btn {
-  margin-left: 15px;
+  margin-left: 10px;
   margin-top: 20px;
   padding: 10px 20px;
   background-color: rgba(53, 107, 182, 0.7);

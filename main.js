@@ -1,9 +1,10 @@
 import { API_ENDPOINT } from "./config.js";
 import { API_KEY } from "./config.js";
-// TRANSLATION
 
+let enunciateButton = document.getElementById("enunciate-btn");
 let buttonTranslate = document.getElementById("button-translate");
 
+// TRANSLATION
 async function translateText() {
   const wordToTranslate = document.getElementById("inputWord").value; // Fetch text from input
   const selectedLanguage = document.getElementById("select-language").value; // Fetch selected language
@@ -57,4 +58,23 @@ async function translateText() {
   }
 }
 
+// Speech Synthesis Utterance
+let synth = window.speechSynthesis;
+
+let inputWord = document.getElementById("inputWord");
+let dropdownLanguage = document.getElementById("select-language");
+let voice = document.getElementById("voice");
+let voices;
+
+const loadVoices = () => {
+  //getting available voices
+  voices = synth.getVoices();
+  console.log(voices);
+  let voice1 = document.getElementById('"option-voice1"');
+
+  voice1 = voices;
+  console.log(voice1[0][2]);
+};
+
+enunciateButton.addEventListener("click", loadVoices);
 buttonTranslate.addEventListener("click", translateText);

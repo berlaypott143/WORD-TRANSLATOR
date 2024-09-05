@@ -13,35 +13,35 @@
         <div class="speech-pitch">
           Speech Pitch
           <div>
-            <input type="radio" id="option-pitch1" value="pitch" />
-            <label for="option-pitch1">1</label>
+            <input type="radio" id="option-pitch-default" value="pitch" />
+            <label for="option-pitch-default">Default</label>
           </div>
           <div>
-            <input type="radio" id="option-pitch2" value="pitch" />
-            <label for="option-pitch2">2</label>
+            <input type="radio" id="option-pitch-low" value="pitch" />
+            <label for="option-pitch-low">Low</label>
           </div>
           <div>
-            <input type="radio" id="option-pitch3" value="pitch" />
-            <label for="option-pitch3">3</label>
+            <input type="radio" id="option-pitch-high" value="pitch" />
+            <label for="option-pitch-high">High</label>
           </div>
         </div>
         <div class="speech-rate">
           Speech Rate
           <div>
-            <input type="radio" id="option-rate1" value="rate" />
-            <label for="option-rate1">1</label>
+            <input type="radio" id="option-rate-default" value="rate" />
+            <label for="option-rate-default">Default</label>
           </div>
           <div>
-            <input type="radio" id="option-rate2" value="rate" />
-            <label for="option-rate2">2</label>
+            <input type="radio" id="option-rate-slow" value="rate" />
+            <label for="option-rate-slow">Slow</label>
           </div>
           <div>
-            <input type="radio" id="option-rate3" value="rate" />
-            <label for="option-rate3">3</label>
+            <input type="radio" id="option-rate-fast" value="rate" />
+            <label for="option-rate-fast">Fast</label>
           </div>
         </div>
 
-        <div class="voice">
+        <div class="voice" id="voice">
           Voice
           <div>
             <input type="radio" id="option-voice1" value="voice" />
@@ -74,7 +74,7 @@
       <div class="translation-container">
         <h3>Translation</h3>
         <div id="translation" class="translation"></div>
-        <button class="enunciate-btn">Enunciate</button>
+        <button class="enunciate-btn" id="enunciate-btn">Enunciate</button>
       </div>
     </div>
 
