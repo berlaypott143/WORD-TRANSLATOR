@@ -69,11 +69,12 @@ let voices;
 const loadVoices = () => {
   //getting available voices
   voices = synth.getVoices();
-  console.log(voices);
-  let voice1 = document.getElementById('"option-voice1"');
 
-  voice1 = voices;
-  console.log(voice1[0][2]);
+  let voice1 = document.getElementById("option-voice1");
+  let voice2 = document.getElementById("option-voice2");
+  let voice3 = document.getElementById("option-voice3");
+
+  for (let i = 0; i < voices.length; i++) {}
 };
 
 enunciateButton.addEventListener("click", loadVoices);
