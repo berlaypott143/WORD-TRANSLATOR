@@ -3,6 +3,7 @@ import { API_KEY } from "./config.js";
 
 let enunciateButton = document.getElementById("enunciate-btn");
 let buttonTranslate = document.getElementById("button-translate");
+let selectLanguage = document.getElementById("select-language");
 
 // TRANSLATION
 async function translateText() {
@@ -59,25 +60,32 @@ async function translateText() {
 
 // Speech Synthesis Utterance
 let synth = window.speechSynthesis;
-
 let voices = [];
 
+// Function to load voices and filter them based on the selected language
 const loadVoices = () => {
   //getting available voices
   voices = synth.getVoices();
 
+  const selectedLanguage = document.getElementById("select-language").value; // Get selected language
+  const filteredVoices = voices.filter((voice) =>
+    voice.lang.startsWith(selectedLanguage)
+  );
+
   // Assign voices to radio buttons
-  if (voices.length >= 3) {
-    document.getElementById("option-voice1").value = voices[0].name;
-    document.getElementById("option-voice2").value = voices[1].name;
-    document.getElementById("option-voice3").value = voices[2].name;
+  if (filteredVoices.length >= 3) {
+    document.getElementById("option-voice1").value = filteredVoices[0].name;
+    document.getElementById("option-voice2").value = filteredVoices[1].name;
+    document.getElementById("option-voice3").value = filteredVoices[2].name;
 
     document.querySelector("label[for='option-voice1']").textContent =
-      voices[0].name;
+      filteredVoices[0].name;
     document.querySelector("label[for='option-voice2']").textContent =
-      voices[1].name;
+      filteredVoices[1].name;
     document.querySelector("label[for='option-voice3']").textContent =
-      voices[2].name;
+      filteredVoices[2].name;
+  } else {
+    console.log("Not enough voices available for the selected language.");
   }
 };
 
@@ -95,21 +103,41 @@ const getSelectedVoice = () => {
   return voices.find((voice) => voice.name === selectedVoiceName); // Find the voice object with the selected name
 };
 
-const enunciateTranslation = () => {
+const speakText = () => {
   const selectedVoice = getSelectedVoice(); // Get the selected voice
-  const translation = document.getElementById("translation").textContent; // Get the translated text
-  console.log(translation);
+  const translationText = document.getElementById("translation").innerText;
+  const selectedLanguage = document.getElementById("select-language").value;
 
-  if (selectedVoice && translation) {
-    const utterance = new SpeechSynthesisUtterance(translation); // Create speech object
-    utterance.voice = selectedVoice; // Set the selected voice
+  console.log("Captured Translation text:", translationText);
+  console.log("Selected voice:", selectedVoice);
+  console.log("Selected language:", selectedLanguage);
 
-    synth.speak(utterance); // Speak the text
+  if (selectedVoice && translationText) {
+    // Ensure the voice supports the language
+    if (selectedVoice.lang.startsWith(selectedLanguage)) {
+      const utterance = new SpeechSynthesisUtterance(translationText);
+      utterance.voice = selectedVoice;
+      utterance.lang = selectedLanguage; // Ensure the correct language is set
+
+      console.log("Speaking the translated text in:", selectedLanguage);
+
+      synth.cancel(); // Clear any ongoing speech
+      synth.speak(utterance);
+    } else {
+      console.log(
+        "Selected voice does not support the language:",
+        selectedLanguage
+      );
+    }
   } else {
     console.log("No voice selected or no translation available.");
   }
 };
 
 // event listener
-enunciateButton.addEventListener("click", enunciateTranslation);
+enunciateButton.addEventListener("click", () => {
+  console.log("Enunciate button clicked!");
+  speakText();
+});
+selectLanguage.addEventListener("change", loadVoices); // Listen for changes to the language dropdown and reload voices accordingly
 buttonTranslate.addEventListener("click", translateText);
